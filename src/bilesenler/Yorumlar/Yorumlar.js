@@ -2,15 +2,18 @@ import React from 'react';
 import Yorum from './Yorum';
 import './Yorumlar.css';
 
-const Yorumlar = props => {
-  // 🔥 Bu bileşenin parentının aşağıdaki propları düzgün gönderdiğinden emin olun.
+const Yorumlar = (props) => {
+  // Düzgün destructuring
   const { yorumlar } = props;
 
   return (
     <div>
-      {/* her gönderi yorumları için map'le işleyerek bir Yorum bileşeni döndürün (proplarına dikkat ederek)*/}
+      {Array.isArray(yorumlar) && yorumlar.map((yorum) => (
+        <Yorum key={yorum.id} yorum={yorum} />
+      ))}
     </div>
   );
+  
 };
 
 export default Yorumlar;
